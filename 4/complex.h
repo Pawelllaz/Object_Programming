@@ -10,6 +10,12 @@ class Complex
 private:
   double Real, Imag;
 public:
+  Complex(double re=0, double im=0)
+  {
+    this->Real=re;
+    this->Imag=im;
+  }
+/*
     Complex ():Real (0), Imag (0)
   {
   };
@@ -25,7 +31,7 @@ public:
     this->Real = Real;
     this->Imag = Imag;
   };
-
+*/
   Complex & operator= (const Complex & s)
   {
     Real = s.Real;
@@ -60,38 +66,23 @@ public:
     Imag -= co.Imag;
     return *this;
   };
-  Complex operator/ (const Complex& co)
+  Complex operator/ (const Complex& co) const 
   {
     Complex n;
     double re;
-    re = this->Real * this->Imag * co.Real * co.Imag;
-    if(re>0)
-    {
-	n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
-	n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
-	return n;
-    }
-    else
-    {
-	cout << "blad dzielenia\n" <<endl;
-    }
+    re = this->Real * co.Real + co.Imag * this->Imag;
+    n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
+    n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
+    return n;
   }
-
   Complex & operator/= (Complex co)
   {
     Complex n;
-    double re = Real * Imag + co.Real * co.Imag;
-    if(re>0)
-    {
-	n.Real = (Real * co.Real + Imag * co.Imag)/re;
-	n.Imag = (co.Real * Imag - Real * co.Imag)/re;
-	*this=n;
-	return *this;
-    }
-    else
-    {
-	cout << "blad dzielenia\n" <<endl;
-    }
+    double re = this->Real * co.Real + co.Imag * this->Imag;
+    n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
+    n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
+    *this=n;
+    return *this;
 	
   }
   friend Complex operator- (Complex, Complex);
