@@ -13,6 +13,9 @@ int main()
   c = a + b;
   c = c - Complex(10);
   cout << c <<endl;
+  cout << "modul = "<< a.abs() <<endl;
+  cout << "faza = " << a.phase() <<endl;
+  cout << "sprzezenie = " << a.conj() <<endl;
   c = Complex(2,3) / Complex(5,10);
   cout << c <<endl;
   c = Complex(2,3);
@@ -21,4 +24,5 @@ int main()
   c = 10 - a;
   (c -=b) -=10;
   cout << c <<endl;
+  cout << 123 << "abc" << 43 <<endl;
 }

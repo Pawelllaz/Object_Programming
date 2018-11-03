@@ -15,23 +15,6 @@ public:
     this->Real=re;
     this->Imag=im;
   }
-/*
-    Complex ():Real (0), Imag (0)
-  {
-  };
-
-  Complex (double co)
-  {
-    Real = co;
-    Imag = 0;
-  };
-
-  Complex (double Real, double Imag)
-  {
-    this->Real = Real;
-    this->Imag = Imag;
-  };
-*/
   Complex & operator= (const Complex & s)
   {
     Real = s.Real;
@@ -82,8 +65,21 @@ public:
     n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
     n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
     *this=n;
-    return *this;
-	
+    return *this;	
+  }
+  double abs()
+  {
+    double abs=sqrt((this->Real*this->Real)+(this->Imag*this->Imag));
+    return abs;
+  }
+  double phase()
+  {
+    double ph=atan2(this->Real,this->Imag);
+    return ph;
+  }
+  Complex conj()
+  {
+    return Complex(this->Real,-this->Imag);
   }
   friend Complex operator- (Complex, Complex);
   friend ostream & operator << (ostream & s, const Complex & c)
