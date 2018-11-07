@@ -52,18 +52,17 @@ public:
   Complex operator/ (const Complex& co) const 
   {
     Complex n;
-    double re;
-    re = this->Real * co.Real + co.Imag * this->Imag;
-    n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
-    n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
+    double re = co.Real*co.Real+co.Imag*co.Imag;
+    n.Real = ((this->Real*co.Real)+(this->Imag*co.Imag))/re;
+    n.Imag = ((this->Imag*co.Real)-(this->Real*co.Imag))/re;
     return n;
   }
   Complex & operator/= (Complex co)
   {
     Complex n;
-    double re = this->Real * co.Real + co.Imag * this->Imag;
-    n.Real = (this->Real * co.Real + this->Imag * co.Imag)/re;
-    n.Imag = (co.Real * this->Imag - this->Real * co.Imag)/re;
+    double re = co.Real*co.Real+co.Imag*co.Imag;
+    n.Real = ((this->Real*co.Real)+(this->Imag*co.Imag))/re;
+    n.Imag = ((this->Imag*co.Real)-(this->Real*co.Imag))/re;
     *this=n;
     return *this;	
   }

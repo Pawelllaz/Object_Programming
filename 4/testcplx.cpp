@@ -21,6 +21,11 @@ int main()
   c = Complex(2,3);
   c/=Complex(5,10);  
   cout << c <<endl;
+  c = Complex(10,20) / Complex(30,60);
+  cout << c <<endl;
+  c = Complex(10,20);
+  c /= Complex(30,60);
+  cout << c <<endl;
   c = 10 - a;
   (c -=b) -=10;
   cout << c <<endl;
