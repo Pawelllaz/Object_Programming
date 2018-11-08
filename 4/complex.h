@@ -73,7 +73,7 @@ public:
   }
   double phase()
   {
-    double ph=atan2(this->Real,this->Imag);
+    double ph=atan2(this->Imag,this->Real);
     return ph;
   }
   Complex conj()
