@@ -19,6 +19,10 @@ poly::poly(double new_number)
 
 ostream &operator<<(ostream &out, poly po)
 {
-	
-	for(map<int,double>::const_iterator i = po.p.begin()) // po.p nie widzi
+    string s = "";
+    for(map<int,double>::const_iterator i = po.p.begin(); i!=po.p.end(); i++)
+    {
+        if((*i).second!=0) s += (*i).second.str();
+
+    }
 }
