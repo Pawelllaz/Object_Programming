@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <iostream>
 #include <math.h>
 #include <map>
@@ -59,7 +58,6 @@ ostream &operator<<(std::ostream &out, poly po)
 {
 	stringstream s;
 	if (po.p.begin() == po.p.end()) return out << "0";
-	int size = po.p.size();
 	for (std::map<int,double>::const_iterator i = --po.p.end(); i != po.p.begin() ; i--)
 	{
 		if ((*i).second != 0)
