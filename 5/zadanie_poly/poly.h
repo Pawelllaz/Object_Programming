@@ -10,6 +10,7 @@ class poly
 private:
 	std::map<int, double> p;
 public:
+	~poly();
 	poly(double new_number = 0);
 	double &operator[] (const int i);
 	poly operator+ (const poly &po) const;

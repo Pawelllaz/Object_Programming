@@ -5,6 +5,10 @@
 #include <sstream>
 using namespace std;
 
+poly::~poly()
+{
+	p.clear();
+}
 poly::poly(double new_number)
 {
 	this->p[0] = new_number;
@@ -58,26 +62,28 @@ ostream &operator<<(std::ostream &out, poly po)
 {
 	stringstream s;
 	if (po.p.begin() == po.p.end()) return out << "0";
-	for (std::map<int,double>::const_iterator i = --po.p.end(); i != po.p.begin() ; i--)
+	for (std::map<int,double>::const_iterator i = --po.p.end();; i--)
 	{
 		if ((*i).second != 0)
 		{
+			if(i != --po.p.end()) s << " + ";
 			if ((*i).second != 1) s << (*i).second;
-			if ((*i).first > 1)
-			{
+			//if ((*i).first != 0 && (*i).first != 1)
+			//{
 				s << "x^";
 				s << (*i).first;
-			}
-			else s << "x";
+			//}
+			//else s << "x";
 
-			if ((*i).first - 1 != 0) s << " + ";
+			//if ((*i).first - 1 != 0) s << " + ";
 		}
+		if(i == po.p.begin()) break;
 	}
 
-	if ((*po.p.begin()).second != 0)
+	/*if ((*po.p.begin()).second != 0)
 	{
 		s << " + ";
 		s << (*po.p.begin()).second;
-	}
+	}*/
 	return out << s.str();
 }

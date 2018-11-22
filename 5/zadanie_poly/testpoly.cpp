@@ -6,7 +6,7 @@ using namespace std;
 int main(void)
 {
 	poly P1;				//Declare object representing polynomial P1
-    P1[3] = 2; P1[1] = 3.6; P1[0] = 7;	//Specify coefficients of P1 = 2x^3 + 3.6x + 7
+    P1[-3] = 2; P1[1] = 3.6; P1[0] = 7;	//Specify coefficients of P1 = 2x^3 + 3.6x + 7
     
 	poly P2=5;				//Declare object representing polynomial P2 = 5
 	P2[1] = 3; P2[2] = 6; P2[4] = 1;	//Specify additional coefficients of P2 = x^4 + 6x^2 + 3x + 5
