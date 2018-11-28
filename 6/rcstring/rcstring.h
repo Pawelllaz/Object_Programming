@@ -29,7 +29,7 @@ public:
 	char& operator[](unsigned int i);
 	int atoi();
 	rcstring& toLower();
-	rcstring Left(int n);
+	rcstring Left(int);
 };
 
 struct rcstring::rctext
@@ -178,9 +178,9 @@ int rcstring::atoi()
 {
 	//if (data->size < 1) return -1;
 	stringstream s;
-	int sign = 0;
+	int sign = 0, i;
 	if(this->data->s[0] == '-') sign = -1;
-	for (sign == -1 ? int i = 1 : int i = 0; this->data->s[i] != '\0'; i++)
+	for (sign == -1 ? i = 1 : i = 0; this->data->s[i] != '\0'; i++)
 		s << this->data->s[i];
 
 	int result;
@@ -196,11 +196,12 @@ rcstring& rcstring::toLower()
 
 rcstring rcstring::Left(int n)
 {
-	/*rcstring result;
-	else if(n > 0) 
+	rcstring result;
+	if(n > 0) 
 	{
 		if(n >= this->data->size) result.data->size = n;
 		else result.data->size = n;
+		//result.data->s = new char[2];
 		int i = 0;
 		for(i=0;i<result.data->size;i++)
 			result.data->s[i] = this->data->s[i];		
@@ -211,24 +212,7 @@ rcstring rcstring::Left(int n)
 		result.data->s = NULL;
 		result.data->size = 0;
 	}
-	return result;*/
-	int i, size;
-    rcstring new_str;
- 
-    if(x>= data->size) new_str.data->size = data->size;
-    else new_str.data->size=x+1;
-   
-    size = new_str.data->size;
-    new_str.data->s=new char[size];
-   
-    for(i=0;  i<size-1;i++)
-    {
-        new_str.data->s[i] = this->data->s[i];
-    }
-   
-    new_str.data->s[i]='\0';
-   
-    return new_str;
+	return result;
 }
 
 #endif /* __RCSTRING_H__ */

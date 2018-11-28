@@ -24,7 +24,7 @@ int main()
 
 	// funkcje dopisane
 
-	rcstring e, f, g;
+	rcstring e, f, g, h;
 	// atoi	
 	e = "123";
 	cout << e.atoi() << endl;
@@ -33,7 +33,8 @@ int main()
 	f.toLower();
 	cout << f << endl;
 	// Left
-	g = "ala ma kota";
-	cout << "oryginal: " << g << "\nLeft(3): " << g.Left(3) <<endl;
+	g = "ala ma kota i psa";
+	h = g.Left(3);
+	cout << "oryginal: " << g << "\nLeft(3): " << h <<endl;
 	return 0;
 }
