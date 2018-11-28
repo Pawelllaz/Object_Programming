@@ -196,7 +196,7 @@ rcstring& rcstring::toLower()
 
 rcstring rcstring::Left(int n)
 {
-	rcstring result;
+	/*rcstring result;
 	else if(n > 0) 
 	{
 		if(n >= this->data->size) result.data->size = n;
@@ -211,7 +211,24 @@ rcstring rcstring::Left(int n)
 		result.data->s = NULL;
 		result.data->size = 0;
 	}
-	return result;	
+	return result;*/
+	int i, size;
+    rcstring new_str;
+ 
+    if(x>= data->size) new_str.data->size = data->size;
+    else new_str.data->size=x+1;
+   
+    size = new_str.data->size;
+    new_str.data->s=new char[size];
+   
+    for(i=0;  i<size-1;i++)
+    {
+        new_str.data->s[i] = this->data->s[i];
+    }
+   
+    new_str.data->s[i]='\0';
+   
+    return new_str;
 }
 
 #endif /* __RCSTRING_H__ */
