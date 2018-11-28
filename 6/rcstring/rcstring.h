@@ -176,14 +176,16 @@ char& rcstring::operator[](unsigned int i)
 
 int rcstring::atoi()
 {
-	if (data->size < 1) return -1;
+	//if (data->size < 1) return -1;
 	stringstream s;
-	for (int i = 0; this->data->s[i] != '\0'; i++)
+	int sign = 0;
+	if(this->data->s[0] == '-') sign = -1;
+	for (sign == -1 ? int i = 1 : int i = 0; this->data->s[i] != '\0'; i++)
 		s << this->data->s[i];
 
 	int result;
 	s >> result;
-	return result;
+	return result*sign;
 }
 rcstring& rcstring::toLower()
 {
@@ -194,12 +196,13 @@ rcstring& rcstring::toLower()
 
 rcstring rcstring::Left(int n)
 {
-	rcstring result = "";
-	result.data->size = n;
-	if(n>0)
+	rcstring result;
+	else if(n > 0) 
 	{
+		if(n >= this->data->size) result.data->size = n;
+		else result.data->size = n;
 		int i = 0;
-		for(i=0;i<n;i++)
+		for(i=0;i<result.data->size;i++)
 			result.data->s[i] = this->data->s[i];		
 		result.data->s[i] = '\0';
 	}
