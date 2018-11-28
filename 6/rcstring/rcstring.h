@@ -29,7 +29,7 @@ public:
 	char& operator[](unsigned int i);
 	int atoi();
 	rcstring& toLower();
-	rcstring Left();
+	rcstring Left(int n);
 };
 
 struct rcstring::rctext
@@ -200,10 +200,10 @@ rcstring rcstring::Left(int n)
 	{
 		int i = 0;
 		for(i=0;i<n;i++)
-			result->data->s[i] = this->data->s[i];		
-		result->data->s[i] = '\0';
+			result.data->s[i] = this->data->s[i];		
+		result.data->s[i] = '\0';
 	}
-	else result->data->s = NULL;
+	else result.data->s = NULL;
 	return result;	
 }
 

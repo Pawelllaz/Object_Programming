@@ -25,12 +25,15 @@ int main()
 	// funkcje dopisane
 
 	rcstring e, f, g;
+	// atoi	
 	e = "123";
 	cout << e.atoi() << endl;
-	
+	// toLower
 	f = "dUzE Na MaLe";
 	f.toLower();
 	cout << f << endl;
-
+	// Left
+	g = "ala ma kota";
+	cout << "oryginal: " << g << "\nLeft(3): " << g.Left(3) <<endl;
 	return 0;
 }
