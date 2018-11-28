@@ -29,7 +29,7 @@ public:
 	char& operator[](unsigned int i);
 	int atoi();
 	rcstring& toLower();
-	//rcstring Left();
+	rcstring Left();
 };
 
 struct rcstring::rctext
@@ -191,10 +191,20 @@ rcstring& rcstring::toLower()
 		if (this->data->s[i] > 'A'&&this->data->s[i] < 'Z') this->data->s[i] = this->data->s[i] + ('a' - 'A');
 	return *this; 
 }
-/*
+
 rcstring rcstring::Left(int n)
 {
-
+	rcstring result;
+	
+	if(n>0)
+	{
+		int i = 0;
+		for(i=0;i<n;i++)
+			result->data->s[i] = this->data->s[i];		
+		result->data->s[i] = '\0';
+	}
+	else result->data->s = NULL;
+	return result;	
 }
-*/
+
 #endif /* __RCSTRING_H__ */
