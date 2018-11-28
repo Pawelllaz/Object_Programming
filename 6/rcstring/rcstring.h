@@ -194,8 +194,8 @@ rcstring& rcstring::toLower()
 
 rcstring rcstring::Left(int n)
 {
-	rcstring result;
-	
+	rcstring result = "";
+	result.data->size = n;
 	if(n>0)
 	{
 		int i = 0;
@@ -203,7 +203,11 @@ rcstring rcstring::Left(int n)
 			result.data->s[i] = this->data->s[i];		
 		result.data->s[i] = '\0';
 	}
-	else result.data->s = NULL;
+	else 
+	{
+		result.data->s = NULL;
+		result.data->size = 0;
+	}
 	return result;	
 }
 
