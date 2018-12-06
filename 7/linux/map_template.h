@@ -22,7 +22,7 @@ public:
 template<typename T1, typename  T2>
 inline void map_template<T1, T2>::Add(unsigned int i, class Employee emp)
 {
-	this->mapa.insert(i, emp);
+	this->mapa.insert(i, emp); // problem!!!
 }
 
 /*template<typename T1, typename T2>
