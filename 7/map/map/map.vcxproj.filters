@@ -29,17 +29,11 @@
     <ClCompile Include="map.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="testmap.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="employee.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="map_template.h">
       <Filter>Pliki nagłówkowe</Filter>
-    </ClCompile>
-    <ClCompile Include="map_template.cpp">
-      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
