@@ -189,19 +189,20 @@ int rcstring::atoi()
 }
 rcstring& rcstring::toLower()
 {
+	this->data=this->data->detach();
 	for (int i = 0; this->data->s[i] != '\0'; i++)
-		if (this->data->s[i] > 'A'&&this->data->s[i] < 'Z') this->data->s[i] = this->data->s[i] + ('a' - 'A');
+		if (this->data->s[i] > 'A' && this->data->s[i] < 'Z') this->data->s[i] = this->data->s[i] + ('a' - 'A');
 	return *this; 
 }
 
 rcstring rcstring::Left(int n)
 {
-	rcstring result;
+	/*rcstring result;
 	if(n > 0) 
 	{
 		if(n >= this->data->size) result.data->size = n;
 		else result.data->size = n;
-		//result.data->s = new char[2];
+		result.data->s = new char[result.data->size];
 		int i = 0;
 		for(i=0;i<result.data->size;i++)
 			result.data->s[i] = this->data->s[i];		
@@ -212,6 +213,11 @@ rcstring rcstring::Left(int n)
 		result.data->s = NULL;
 		result.data->size = 0;
 	}
+	return result;*/
+	check(n);
+	rcstring result;
+	delete result.data;
+	result.data = new rctext(n,this->data->s);
 	return result;
 }
 

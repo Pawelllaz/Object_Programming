@@ -30,11 +30,14 @@ int main()
 	cout << e.atoi() << endl;
 	// toLower
 	f = "dUzE Na MaLe";
+	rcstring F = f;
 	f.toLower();
 	cout << f << endl;
+	cout << "DUZE: " << F << endl;
 	// Left
 	g = "ala ma kota i psa";
 	h = g.Left(3);
 	cout << "oryginal: " << g << "\nLeft(3): " << h <<endl;
+	cout << g <<endl;
 	return 0;
 }
