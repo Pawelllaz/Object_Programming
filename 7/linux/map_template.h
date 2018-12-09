@@ -1,50 +1,48 @@
-#ifndef __MAP_TEMPLATE_H__
-#define __MAP_TEMPLATE_H__
+#ifndef __MAPTEMPLATE_H__
+#define __MAPTEMPLATE_H__
 
 #include <iostream>
 #include <map>
-#include "employee.h"
 #include <sstream>
-//#include <typeinfo>
+#include "employee.h"
+
 using namespace std;
 
 template<typename T1, typename T2>
 class map_template
 {
 private:
-	std::map<T1, T2> mapa;
+	map<T1, T2> mp;
 public:
-	//map_template(const class map_template&);
-	void Add(unsigned int, class Employee);
-	friend std::ostream& operator<<(std::ostream&, const map_template<T1, T2>&);
-};
-	
-template<typename T1, typename  T2>
-inline void map_template<T1, T2>::Add(unsigned int i, class Employee emp)
-{
-	this->mapa.insert(i, emp); // problem!!!
-}
-
-/*template<typename T1, typename T2>
-map_template<T1, T2>::map_template(const class map_template& m)
-{
-	this->mapa = m;
-}*/
-
-template<typename T1, typename T2>
-std::ostream& operator<<(std::ostream &o, const map_template<T1, T2>&m)
-{
-	stringstream s;
-	s << "asd";
-	/*for (std::map<T1, T2>::const_iterator i = mapa.begin(); i != mapa.end(); i++)
+	void Add(T1, T2);
+	Employee* Find(T1);
+	friend ostream& operator<<(ostream& o, const map_template<T1, T2>& m)
 	{
-		
-	}*/
-	return s.str();
+		stringstream s;
+		Employee temp_emp;
+		for(typename map<T1, T2>::const_iterator i = m.mp.begin(); i!=m.mp.end(); i++)
+		{
+			temp_emp = m.mp.at((*i).first);
+			s << "ID: " <<(*i).first << " --> " << temp_emp.output_elements()<<endl;
+		}   
+		return o << s.str();
+	}
+
+};
+template<typename T1, typename T2>
+inline Employee* map_template<T1, T2>::Find(T1 id)
+{
+	Employee *result;
+	result = &this->mp.at(id);
+	return result;
+}
+template<typename T1, typename T2>
+inline void map_template<T1, T2>::Add(T1 id, T2 employee)
+{
+	this->mp.insert(pair<T1, T2>(T1(id),T2(employee)));
 }
 
-// http://edu.pjwstk.edu.pl/wyklady/pro/scb/PRG2CPP_files/node129.html
-// https://4programmers.net/C/Szablony_klas
-// http://cpp0x.pl/kursy/Kurs-C++/Szablony-klas/317
+//template<typename T1, typename T2>
+//ostream & operator<<(ostream &o, const map_template<T1, T2>& m)
 
-#endif __MAP_TEMPLATE_H__
+#endif // !__MAPTEMPLATE_H__

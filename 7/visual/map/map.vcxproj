@@ -152,7 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="employee.h" />
-    <ClInclude Include="maptemplate.h" />
+    <ClInclude Include="map_template.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ int main(void)
 	cout << Database << endl;							//Print databese
 
 	map_template<ID, Employee> NewDatabase = Database;	//Make a copy of database
-	/*
+	
 	Employee* pE;
 	pE = NewDatabase.Find(510212881);					//Find employee using its ID
 	pE->Position = "salesman";							//Modify the position of employee
@@ -25,5 +25,5 @@ int main(void)
 
 	Database = NewDatabase;								//Update original database
 
-	cout << Database << endl;*/							//Print original databese
+	cout << Database << endl;							//Print original databese
 };

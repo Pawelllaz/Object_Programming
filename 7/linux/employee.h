@@ -5,13 +5,13 @@ using namespace std;
 
 class Employee
 {
-private:
+public:
 	string name;
 	string Position;
-	int age;
-public:
+	int Age;
+	Employee();
 	Employee(string, string, int);
-	~Employee();
+	string output_elements();
 };
 
 

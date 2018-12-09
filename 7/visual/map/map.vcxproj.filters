@@ -21,7 +21,7 @@
     <ClInclude Include="employee.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="maptemplate.h">
+    <ClInclude Include="map_template.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

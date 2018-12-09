@@ -1,3 +1,4 @@
+#include "pch.h"
 #include <string.h>
 #include <stdio.h>
 #include <iostream>
@@ -10,10 +11,24 @@ Employee::Employee(string new_name, string new_position, int new_age)
 {
 	this->name = new_name;
 	this->Position = new_position;
-	this->age = new_age;
+	this->Age = new_age;
 }
+
+Employee::Employee()
+{
+	this->Age = 0;
+	this->name = "";
+	this->Position = "";
+}
+string Employee::output_elements()
+{
+	stringstream s;
+	s << "Name: " << this->name << ", Position: " << this->Position << ", Age: " << this->Age;
+	return s.str();
+}
+/*
 Employee::~Employee()
 {
-	delete[] this;
-}
+	delete this;
+}*/
 
