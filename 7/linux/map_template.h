@@ -14,7 +14,7 @@ class map_template
 private:
 	map<T1, T2> mp;
 public:
-	void Add(T1, T2);
+	void Add(const T1&, const T2&);
 	Employee* Find(T1);
 	friend ostream& operator<<(ostream& o, const map_template<T1, T2>& m)
 	{
@@ -33,11 +33,18 @@ template<typename T1, typename T2>
 inline Employee* map_template<T1, T2>::Find(T1 id)
 {
 	Employee *result;
-	result = &this->mp.at(id);
+	try 
+	{
+		result = &this->mp.at(id);
+	}
+	catch(std::out_of_range)
+	{
+		return NULL;	
+	}
 	return result;
 }
 template<typename T1, typename T2>
-inline void map_template<T1, T2>::Add(T1 id, T2 employee)
+inline void map_template<T1, T2>::Add(const T1 &id,const T2 &employee)
 {
 	this->mp.insert(pair<T1, T2>(T1(id),T2(employee)));
 }

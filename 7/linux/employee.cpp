@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <string.h>
 #include <stdio.h>
 #include <iostream>
@@ -7,28 +6,25 @@
 
 using namespace std;
 
-Employee::Employee(string new_name, string new_position, int new_age)
+Employee::Employee(string new_name = "", string new_position = "", int new_age = 0)
 {
-	this->name = new_name;
+	this->Name = new_name;
 	this->Position = new_position;
 	this->Age = new_age;
 }
 
 Employee::Employee()
 {
-	this->Age = 0;
-	this->name = "";
+	this->Name = "";
 	this->Position = "";
+	this->Age = 0;
 }
+
 string Employee::output_elements()
 {
 	stringstream s;
-	s << "Name: " << this->name << ", Position: " << this->Position << ", Age: " << this->Age;
+	s << "Name: " << this->Name << ", Position: " << this->Position << ", Age: " << this->Age;
 	return s.str();
 }
-/*
-Employee::~Employee()
-{
-	delete this;
-}*/
+
 
