@@ -20,15 +20,21 @@ public:
 	{
 		stringstream s;
 		Employee temp_emp;
-		for(typename map<T1, T2>::const_iterator i = m.mp.begin(); i!=m.mp.end(); i++)
+		for (typename map<T1, T2>::const_iterator i = m.mp.begin(); i != m.mp.end(); i++)
 		{
 			temp_emp = m.mp.at((*i).first);
-			s << "ID: " <<(*i).first << " --> " << temp_emp.output_elements()<<endl;
-		}   
+			s << "ID: " << (*i).first << " --> " << temp_emp.output_elements() << endl;
+		}
 		return o << s.str();
 	}
-
+	~map_template();
 };
+
+template<typename T1, typename T2>
+map_template<T1, T2>::~map_template()
+{
+	this->mp.clear;
+}
 template<typename T1, typename T2>
 inline Employee* map_template<T1, T2>::Find(T1 id)
 {
@@ -43,6 +49,6 @@ inline void map_template<T1, T2>::Add(T1 id, T2 employee)
 }
 
 //template<typename T1, typename T2>
-//ostream & operator<<(ostream &o, const map_template<T1, T2>& m)
+//ostream &  operator<<(ostream &o, const map_template<T1, T2>& m)
 
 #endif // !__MAPTEMPLATE_H__

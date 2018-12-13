@@ -26,9 +26,9 @@ string Employee::output_elements()
 	s << "Name: " << this->name << ", Position: " << this->Position << ", Age: " << this->Age;
 	return s.str();
 }
-/*
+
 Employee::~Employee()
 {
 	delete this;
-}*/
+}
 

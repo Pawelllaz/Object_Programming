@@ -12,6 +12,7 @@ public:
 	Employee();
 	Employee(string, string, int);
 	string output_elements();
+	~Employee();
 };
 
 

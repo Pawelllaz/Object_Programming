@@ -1,4 +1,14 @@
 ﻿  employee.cpp
   map.cpp
+c:\users\pawel\desktop\paweł\po\7\visual\map\map_template.h(36): error C3867: „std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::clear”: niestandardowa składnia; użyj znaku „&”, aby utworzyć wskaźnik do składowej
+          with
+          [
+              _Kty=ID,
+              _Ty=Employee,
+              _Pr=std::less<ID>,
+              _Alloc=std::allocator<std::pair<const ID,Employee>>
+          ]
+  c:\users\pawel\desktop\paweł\po\7\visual\map\map_template.h(35): note: podczas kompilowania funkcji składowej „<Nieznany>” klasy klasa <Nieznany>
+  c:\users\pawel\desktop\paweł\po\7\visual\map\map.cpp(11): note: zobacz odwołanie do funkcji szablon; wystąpienie „map_template<ID,Employee>::~map_template(void)” jest kompilowane
+  c:\users\pawel\desktop\paweł\po\7\visual\map\map.cpp(11): note: zobacz odwołanie do klasy klasa szablon; wystąpienie „map_template<ID,Employee>” jest kompilowane
   Generowanie kodu...
-  map.vcxproj -> C:\Users\pawel\Desktop\Paweł\PO\7\visual\Debug\map.exe
