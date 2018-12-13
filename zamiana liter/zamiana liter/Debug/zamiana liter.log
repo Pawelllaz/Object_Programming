@@ -1,4 +1,6 @@
-﻿  zamiana liter.cpp
-c:\users\pawel\desktop\paweł\zamiana liter\zamiana liter\zamiana liter.cpp(31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-c:\users\pawel\desktop\paweł\zamiana liter\zamiana liter\zamiana liter.cpp(33): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  zamiana liter.vcxproj -> C:\Users\pawel\Desktop\Paweł\zamiana liter\Debug\zamiana liter.exe
+﻿  pch.cpp
+  zamiana liter.cpp
+c:\users\pawel\desktop\paweł\po\zamiana liter\zamiana liter\zamiana liter.cpp(31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\pawel\desktop\paweł\po\zamiana liter\zamiana liter\zamiana liter.cpp(33): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  LINK : nie znaleziono elementu C:\Users\pawel\Desktop\Paweł\PO\zamiana liter\Debug\zamiana liter.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+  zamiana liter.vcxproj -> C:\Users\pawel\Desktop\Paweł\PO\zamiana liter\Debug\zamiana liter.exe
