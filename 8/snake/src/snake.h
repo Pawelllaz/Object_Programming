@@ -9,14 +9,17 @@
 class CSnake:public CFramedWindow
 {
 private:
-  std::vector <int> snake;  
+  std::vector <CPoint> snake;  
+  int score;
+  int err_count;
+  int game_on;
 public:
   CSnake(CRect r, char _c = ' ');
   void paint();
-  void game();
+  bool handleEvent(char);
   int initsnake();
-  void showsnake();
-  
+  void show_snake();
+  void move_snake
 };
 
 #endif
