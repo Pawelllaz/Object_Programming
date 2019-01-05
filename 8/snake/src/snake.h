@@ -19,7 +19,7 @@ public:
   bool handleEvent(char);
   int initsnake();
   void show_snake();
-  void move_snake
+  void move_snake();
 };
 
 #endif

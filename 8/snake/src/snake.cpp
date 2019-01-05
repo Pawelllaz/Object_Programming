@@ -20,13 +20,15 @@ bool CSnake::handleEvent(char key)
     {
     case ERR:
       err_count++;
-      if(err_count == 10 - score/3 || score > 29)
+      if(err_count == 10 - score/3 || score > 30)
       {
 	move_snake();
 	err_count = 0;
       }
       return true;
     case 'p':
+      gotoyx(geom.topleft.y+10,geom.topleft.x+5);
+      printl("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       game_on = !game_on;
       if(!game_on)
         if(CFramedWindow::handleEvent(key))
@@ -74,23 +76,61 @@ void CSnake::paint()
 int CSnake::initsnake()
 {
   snake.clear();
-  snake.push_back({20,10});
-  snake.push_back({19,10});
   snake.push_back({18,10});
+  snake.push_back({19,10});
+  snake.push_back({20,10});
   if(snake.empty()) return 1;
   return 0;
 }
 /////////////////////////////////////////////////////
-void CSnake::show_snake();
+void CSnake::show_snake()
 {
   for(int i = 0; i < snake.size(); i++)
   {
-    gotoyx(snake.at(i);
+    CPoint p = snake[i];
+    gotoyx(geom.topleft.y+p.y, geom.topleft.x+p.x);
     printc('0');
   }
 }
 ///////////////////////////////////////////////////////
-void move_snake()
+void CSnake::move_snake()
 {
-  
+  CPoint head = snake[0];
+  CPoint second_seg = snake[1];
+  int x = head.x - second_seg.x;
+  int y = head.y - second_seg.y;
+  if(y == 0)
+  {
+    for(int i = snake.size() - 1; i > 0; i++)
+    {
+      snake.at(i) = snake.at(i-1);
+    }
+    if(x>0)
+    {  
+      head.x++;
+      snake[0] = head;
+    }
+    else
+    {
+      head.x--;
+      snake[0] = head;
+    }
+  }
+  else
+  {
+    for(int i = snake.size() - 1; i > 0; i++)
+    {
+      snake.at(i) = snake.at(i-1);
+    }
+    if(y>0)
+    {  
+      head.y++;
+      snake[0] = head;
+    }
+    else
+    {
+      head.y--;
+      snake[0] = head;
+    }
+  } 
 }
