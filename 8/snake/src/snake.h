@@ -13,11 +13,11 @@ private:
   int score;
   int err_count;
   int game_on;
+  int wall;
 public:
   CSnake(CRect r, char _c = ' ');
   void paint();
-  bool handleEvent(char);
-  int initsnake();
+  bool handleEvent(int);
   void show_snake();
   void move_snake();
 };
