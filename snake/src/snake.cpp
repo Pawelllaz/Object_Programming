@@ -231,7 +231,7 @@ void CSnake::move_snake()
 //////////////////////////////////////////////////////////////////////////
 void CSnake::move_up()
 {
-  eat();
+  food_eaten();
   CPoint head = snake[0];
   for(unsigned int i = snake.size() - 1; i > 0; i--)
   {
@@ -245,14 +245,14 @@ void CSnake::move_up()
     wall++;
   }
   add_segm();
-  get_food();
+  eat();
   crash();
   snake[0] = head;
 }
 //////////////////////////////////////////////////////////////////////////
 void CSnake::move_down()
 {
-  eat();
+  food_eaten();
   CPoint head = snake[0];
   for(unsigned int i = snake.size() - 1; i > 0; i--)
   {
@@ -266,14 +266,14 @@ void CSnake::move_down()
     wall++;
   }
   add_segm();
-  get_food();
+  eat();
   crash();
   snake[0] = head;
 }
 ////////////////////////////////////////////////////////////////////////////
 void CSnake::move_left()
 {
-  eat();
+  food_eaten();
   CPoint head = snake[0];
   for(unsigned int i = snake.size() - 1; i > 0; i--)
   {
@@ -287,14 +287,14 @@ void CSnake::move_left()
     wall++;
   }
   add_segm();
-  get_food();
+  eat();
   crash();
   snake[0] = head;
 }
 //////////////////////////////////////////////////////////////////////////////
 void CSnake::move_right()
 {
-  eat();
+  food_eaten();
   CPoint head = snake[0];
   for(unsigned int i = snake.size() - 1; i > 0; i--)
   {
@@ -308,7 +308,7 @@ void CSnake::move_right()
     wall++;
   }
   add_segm();
-  get_food();
+  eat();
   crash();
   snake[0] = head;
 }
@@ -347,7 +347,7 @@ void CSnake::create_food()
   }
 }
 ///////////////////////////////////////////////////////////////////////////////
-void CSnake::get_food()
+void CSnake::eat()
 {
   if(snake[0].x == food.x and snake[0].y == food.y)
   {
@@ -356,7 +356,7 @@ void CSnake::get_food()
   }  
 }
 ////////////////////////////////////////////////////////////////////////////////
-void CSnake::eat()
+void CSnake::food_eaten()
 {
   if(food_flag)
   {
