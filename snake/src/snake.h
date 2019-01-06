@@ -16,17 +16,27 @@ private:
   int err_count;
   int game_on;
   int wall;
-  CPoint dimensions;   			// wymiary gry
   int food_flag;
   CPoint food;
+  CPoint add;
+  int over;
 
 public:
   CSnake(CRect r, char _c = ' ');
-  bool handleEvent(int);
-
-  void paint();
-  void show_snake();
   
+  //	game support
+  bool handleEvent(int);
+  void add_segm();
+  void crash();
+
+  //	prints
+  void paint();
+  void print_snake();
+  void print_food();
+  void game_over();
+  void print_lvl();
+
+  //	move
   void move_snake();
 
   void move_up();
@@ -36,9 +46,11 @@ public:
 
   bool moving_up_down();
   bool moving_l_r();
-  
+ 
+  //	food
   void create_food();
-  void print_food();
+  void get_food();
+  void eat();
 };
 
 #endif
