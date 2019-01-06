@@ -20,6 +20,7 @@ private:
   CPoint food;
   CPoint add;
   int over;
+  int help_window;
 
 public:
   CSnake(CRect r, char _c = ' ');

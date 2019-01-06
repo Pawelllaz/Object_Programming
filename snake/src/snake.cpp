@@ -9,6 +9,8 @@ CSnake::CSnake(CRect r, char _c /*=' '*/):
   game_on = 0;
   wall = 0;
   food_flag = 0;
+  help_window = 1;
+  over = 0;
 
   snake.push_back({5,3});
   snake.push_back({4,3});
@@ -31,6 +33,9 @@ bool CSnake::handleEvent(int key)
     game_on = 0;
     wall = 0;
     food_flag = 0;
+    help_window = 1;
+    over = 0;
+
     snake.clear();
     snake.push_back({5,3});
     snake.push_back({4,3});
@@ -43,10 +48,11 @@ bool CSnake::handleEvent(int key)
     switch (key)
       {
       case 'p':
+        if(help_window) help_window = !help_window;
         game_on = !game_on;
         if(!game_on)
-          if(CFramedWindow::handleEvent(key))
-            return true;
+          CFramedWindow::handleEvent(key);
+        return true;
       case ERR:
         if(game_on)
         {
@@ -57,6 +63,12 @@ bool CSnake::handleEvent(int key)
 	    err_count = 0;
           }
         }
+        return true;
+      case 'h':
+        if(game_on) game_on = !game_on;
+        help_window = !help_window;
+        if(!game_on)
+          CFramedWindow::handleEvent(key);
         return true;
       case KEY_UP:
         if(!moving_up_down()) move_up();
@@ -107,20 +119,7 @@ void CSnake::game_over()
 void CSnake::paint()
 {
   CFramedWindow::paint();
-  if(game_on)
-  {
-    print_food();
-    print_snake();
-    print_lvl();
-  }
-  else if(over)
-  {
-    gotoyx(geom.topleft.y+1,geom.topleft.x+4);
-    printl("GAME OVER, your score: %d", score);
-    gotoyx(geom.topleft.y+2,geom.topleft.x+1);
-    printl("press 'r' to reset the game or 'q' to quit");
-  }
-  else
+  if(help_window)
   {
     int i=3;
     gotoyx(geom.topleft.y+i++,geom.topleft.x+3);
@@ -130,10 +129,30 @@ void CSnake::paint()
     gotoyx(geom.topleft.y+i++,geom.topleft.x+3);
     printl("r - restart game");
     gotoyx(geom.topleft.y+i++,geom.topleft.x+3);
+    printl("q - quit game");
+    gotoyx(geom.topleft.y+i++,geom.topleft.x+3);
     printl("arrows - move snake (in play mode) or");
     gotoyx(geom.topleft.y+i++,geom.topleft.x+3);
     printl("       - move window (in pause mode)");
-    if(game_on) print_lvl();
+    if(!over) print_lvl();
+  }
+  else if(!over)
+  {
+    print_food();
+    print_snake();
+    print_lvl();
+    if(!game_on)
+    {
+      gotoyx(geom.topleft.y - 1, geom.topleft.x+16);
+      printl("| game paused |");
+    }
+  }
+  else
+  {
+    gotoyx(geom.topleft.y+1,geom.topleft.x+4);
+    printl("GAME OVER, your score: %d", score);
+    gotoyx(geom.topleft.y+2,geom.topleft.x+1);
+    printl("press 'r' to reset the game or 'q' to quit");
   }
 }
 /////////////////////////////////////////////////////////
