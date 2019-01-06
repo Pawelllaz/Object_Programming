@@ -71,15 +71,19 @@ bool CSnake::handleEvent(int key)
           CFramedWindow::handleEvent(key);
         return true;
       case KEY_UP:
+        wall=0;
         if(!moving_up_down()) move_up();
         return true;
       case KEY_DOWN:
+        wall=0;
         if(!moving_up_down()) move_down();
         return true;
       case KEY_RIGHT:
+        wall=0;
         if(!moving_l_r()) move_right();
         return true;
       case KEY_LEFT:
+        wall=0;
         if(!moving_l_r()) move_left();
         return true;
       };
@@ -112,6 +116,7 @@ void CSnake::game_over()
 {
   game_on = 0;
   over++;
+  snake.clear();
 }
 ///////////////////////////////////////////////////////////
 // >>> PAINTING <<<
