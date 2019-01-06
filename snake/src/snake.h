@@ -50,7 +50,7 @@ public:
  
   //	food
   void create_food();
-  void get_food();
+  void food_eaten();
   void eat();
 };
 
