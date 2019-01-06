@@ -1,17 +1,22 @@
 #include "snake.h"
+
 CSnake::CSnake(CRect r, char _c /*=' '*/):
   CFramedWindow(r, _c)
 {
+  srand(time(NULL));
   dimensions = r.size;
   score = 0;
   err_count = 0;
   game_on = 0;
   wall = 0;
+  food_flag = 0;
+
   snake.reserve(40);
   snake.push_back({5,3});
   snake.push_back({4,3});
   snake.push_back({3,3});
-  int snakesize = snake.size();
+  create_food();
+  
 }
 /////////////////////////////////////////////////////////
 bool CSnake::handleEvent(int key)
@@ -39,26 +44,30 @@ bool CSnake::handleEvent(int key)
       }
       return true;
     case KEY_UP:
-      move_up();
+      if(!moving_up_down()) move_up();
       return true;
     case KEY_DOWN:
-      move_down();
+      if(!moving_up_down()) move_down();
       return true;
     case KEY_RIGHT:
-      move_right();
+      if(!moving_l_r()) move_right();
       return true;
     case KEY_LEFT:
-      move_left();
+      if(!moving_l_r()) move_left();
       return true;
     };
   return false;
 }
+// >>> PAINTING <<<
 /////////////////////////////////////////////////////////
 void CSnake::paint()
 {
   CFramedWindow::paint();
   if(game_on)
+  {
     show_snake();
+    print_food();
+  }
   else
   {
     int i=3;
@@ -85,17 +94,24 @@ void CSnake::show_snake()
   }
 }
 ///////////////////////////////////////////////////////
+void CSnake::print_food()
+{
+  gotoyx(geom.topleft.y+food.y, geom.topleft.x+food.x);
+  printc('+');
+}
+///////////////////////////////////////////////////////
+//		>> MOVING SNAKE <<<
+///////////////////////////////////////////////////////
 void CSnake::move_snake()
 {
-  CPoint head = snake[0];
-  CPoint second_seg = snake[1];
-  int x = head.x - second_seg.x;
-  int y = head.y - second_seg.y;
-  if(y > 0)
+  int x = snake[0].x - snake[1].x;
+  int y = snake[0].y - snake[1].y;
+  
+  if(y > 0) 
   {
     if(wall)
     {
-      wall = 0;
+      wall=0;
       move_up();
     }
     else move_down();
@@ -104,12 +120,12 @@ void CSnake::move_snake()
   {
     if(wall)
     {
-      wall = 0;
+      wall=0;
       move_down();
     }
     else move_up();
   }
-  if(x > 0)
+  if(x > 0) 
   {
     if(wall)
     {
@@ -118,7 +134,7 @@ void CSnake::move_snake()
     }
     else move_right();
   }
-  if(x < 0)
+  if(x < 0) 
   {
     if(wall)
     {
@@ -195,4 +211,38 @@ void CSnake::move_right()
     wall++;
   }
     snake[0] = head;
+}
+////////////////////////////////////////////////////////////////////////////
+bool CSnake::moving_up_down()
+{
+  int x = snake[0].x - snake[1].x;
+  if(x == 0) return true;
+  return false;
+}
+/////////////////////////////////////////////////////////////////////////
+bool CSnake::moving_l_r()
+{
+  int y = snake[0].y - snake[1].y;
+  if(y == 0) return true;
+  return false;
+}
+//	>>> FOOD <<<
+///////////////////////////////////////////////////////////////////////
+void CSnake::create_food()
+{
+  int flag;
+  while(1)
+  {
+    flag = 0;
+    int y = rand() % (geom.size.y - 3) + 1;		// trzeba uwzglednic sciany
+    int x = rand() % (geom.size.x - 3) + 1;
+    food.x = x;
+    food.y = y;
+    /*for(int i = 0; i < snake.size(); i++)
+    {
+      CPoint p = snake[i];
+      if(p.x == food.x and p.y == food.y) flag++;
+    }*/
+    if(flag == 0) break;
+  }
 }
