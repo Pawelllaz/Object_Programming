@@ -63,7 +63,23 @@ bool CSnake::handleEvent(int key)
         if(game_on)
         {
 	  err_count++;
-          if(err_count == 10 - score/3 || score > 30)
+          if(moving_up_down())
+	  {
+	    if(score > 29)
+	    {
+	      if(err_count == 2)
+	      {
+		move_snake();
+		err_count = 0;
+	      }
+  	   }
+	   else if(err_count >= 10 - score / 4)
+	   {
+	     move_snake();
+  	     err_count = 0;
+	   }
+	  }
+	  else if(err_count >= 7 - score/3 || score > 29)
           {
 	    move_snake();
 	    err_count = 0;
