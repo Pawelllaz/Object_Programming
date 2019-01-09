@@ -52,7 +52,7 @@ bool CSnake::handleEvent(int key)
   if(!over)
   {
     switch (key)
-      {
+    {
       case 'p':
         if(help_window) help_window = !help_window;
         game_on = !game_on;
@@ -79,7 +79,7 @@ bool CSnake::handleEvent(int key)
   	     err_count = 0;
 	   }
 	  }
-	  else if(err_count >= 7 - score/3 || score > 29)
+	  else if(err_count >= 7 - score/5 || score > 29)
           {
 	    move_snake();
 	    err_count = 0;
