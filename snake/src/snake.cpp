@@ -23,6 +23,12 @@ CSnake::CSnake(CRect r, char _c /*=' '*/):
 /////////////////////////////////////////////////////////
 bool CSnake::handleEvent(int key)
 {
+  if(key == 'q')
+  {
+    snake.clear();
+    CFramedWindow::handleEvent(key);
+    return true;
+  }
   if(!game_on) 
     if(CFramedWindow::handleEvent(key))
       return true;
@@ -116,7 +122,6 @@ void CSnake::game_over()
 {
   game_on = 0;
   over++;
-  snake.clear();
 }
 ///////////////////////////////////////////////////////////
 // >>> PAINTING <<<
