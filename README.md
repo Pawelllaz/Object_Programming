@@ -1,1 +1,1 @@
-# PO
+Learning C++ object programming.
